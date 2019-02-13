@@ -42,7 +42,7 @@ def handshake(myself):
     #print h_value("upgrade")
     #print h_key_exists("sec-websocket-key")
     # NB: WebSocket headers are case insensitive (RFC 6455, p19)
-    if (not h_key_exists("upgrade")) or not (h_value("upgrade").lower=="websocket") or (not h_key_exists("sec-websocket-key")):
+    if (not h_key_exists("upgrade")) or not (h_value("upgrade").lower()=="websocket") or (not h_key_exists("sec-websocket-key")):
         raise WebSocketException("Bad WebSocket handshake: upgrade={}, sec-websocket-key={}"
                                  .format(h_value("upgrade"), h_value("sec-websocket-key")))
     ws_key=h_value("sec-websocket-key")
